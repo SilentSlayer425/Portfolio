@@ -14,7 +14,7 @@ export function About() {
             <div className="absolute inset-0 warm-glow opacity-60" />
             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
               <img
-                src="/public/images/Portrait.jpg"
+                src="/Portrait.jpg"
                 alt="Portrait of me"
                 className="absolute inset-0 w-full h-full object-cover"
               />
