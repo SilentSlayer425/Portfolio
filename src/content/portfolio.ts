@@ -50,7 +50,7 @@ export const projects = [
     live: "https://outfitcanvas.com",
     repo: "https://github.com/SilentSlayer425/outfit-canvas",
     label: "01",
-    iamge: "/images/outfit-canvas.png",
+    iamge: "public/images/Outfitcanvasicon.png",
   },
   {
     title: "Palladium",
@@ -58,7 +58,7 @@ export const projects = [
       "An open source note taking app based off Notion and Obsidian with features like code-blocks, audio recordings, embeds, p2p file hosting",
     tags: ["No current live status"],
     label: "02",
-    image: "/images/palladium.png",
+    image: "public/images/Palladium.png",
   },
 ];
 
