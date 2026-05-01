@@ -13,11 +13,19 @@ function useMarqueeDuration() {
   );
 
   useEffect(() => {
-    const update = () =>
-      setDuration((window.innerWidth / BASE_WIDTH) * BASE_DURATION);
+    let rafId: ReturnType<typeof setTimeout>;
+    const update = () => {
+      clearTimeout(rafId);
+      rafId = setTimeout(
+        () => setDuration((window.innerWidth / BASE_WIDTH) * BASE_DURATION),
+        150
+      );
+    };
     window.addEventListener("resize", update);
-    update();
-    return () => window.removeEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      clearTimeout(rafId);
+    };
   }, []);
 
   return duration;
@@ -41,7 +49,7 @@ export function Skills() {
 
       <div className="mt-16 relative">
         <div
-          className="flex animate-marquee whitespace-nowrap will-change-transform backface-visibility-hidden"
+          className="flex animate-marquee whitespace-nowrap will-change-transform backface-hidden"
           style={{ animationDuration: `${marqueeDuration}s` }}
         >
           {doubled.map((b, i) => (
