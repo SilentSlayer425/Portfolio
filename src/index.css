@@ -1,0 +1,173 @@
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Cozy Portfolio Design System
+  Warm cream + espresso (light) / deep mocha + beige (dark)
+  All colors in HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cream #FAF6F0 */
+    --background: 36 47% 96%;
+    /* Espresso #2B2018 */
+    --foreground: 24 30% 13%;
+
+    --card: 36 40% 94%;
+    --card-foreground: 24 30% 13%;
+
+    --popover: 36 47% 96%;
+    --popover-foreground: 24 30% 13%;
+
+    /* Camel #B08968 */
+    --primary: 27 32% 55%;
+    --primary-foreground: 36 47% 96%;
+    --primary-glow: 30 45% 70%;
+
+    --secondary: 32 25% 88%;
+    --secondary-foreground: 24 30% 13%;
+
+    --muted: 32 20% 90%;
+    --muted-foreground: 24 15% 38%;
+
+    --accent: 27 32% 55%;
+    --accent-foreground: 36 47% 96%;
+
+    --destructive: 10 60% 45%;
+    --destructive-foreground: 36 47% 96%;
+
+    --border: 30 20% 84%;
+    --input: 30 20% 84%;
+    --ring: 27 32% 55%;
+
+    --radius: 1rem;
+
+    /* Effects */
+    --gradient-warm: radial-gradient(circle at 30% 20%, hsl(30 50% 80% / 0.6), transparent 60%),
+                     radial-gradient(circle at 70% 60%, hsl(27 40% 70% / 0.5), transparent 60%);
+    --shadow-soft: 0 10px 40px -12px hsl(24 30% 13% / 0.15);
+    --shadow-lift: 0 20px 60px -20px hsl(24 30% 13% / 0.25);
+    --grain-opacity: 0.04;
+  }
+
+  .dark {
+    /* Mocha #1A140F */
+    --background: 24 25% 8%;
+    /* Beige #E8DCC8 */
+    --foreground: 36 38% 85%;
+
+    --card: 24 22% 11%;
+    --card-foreground: 36 38% 85%;
+
+    --popover: 24 25% 8%;
+    --popover-foreground: 36 38% 85%;
+
+    /* Caramel #C9A27A */
+    --primary: 30 40% 64%;
+    --primary-foreground: 24 25% 8%;
+    --primary-glow: 30 50% 75%;
+
+    --secondary: 24 18% 16%;
+    --secondary-foreground: 36 38% 85%;
+
+    --muted: 24 15% 14%;
+    --muted-foreground: 36 20% 65%;
+
+    --accent: 30 40% 64%;
+    --accent-foreground: 24 25% 8%;
+
+    --destructive: 10 50% 45%;
+    --destructive-foreground: 36 38% 85%;
+
+    --border: 24 15% 20%;
+    --input: 24 15% 20%;
+    --ring: 30 40% 64%;
+
+    --gradient-warm: radial-gradient(circle at 30% 20%, hsl(30 40% 30% / 0.7), transparent 60%),
+                     radial-gradient(circle at 70% 60%, hsl(20 30% 20% / 0.7), transparent 60%);
+    --shadow-soft: 0 10px 40px -12px hsl(0 0% 0% / 0.5);
+    --shadow-lift: 0 20px 60px -20px hsl(0 0% 0% / 0.7);
+    --grain-opacity: 0.06;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Paper grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.13 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+
+  .dark body::before {
+    mix-blend-mode: screen;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+  }
+  .font-sans {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1.5px] after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1;
+    box-shadow: var(--shadow-soft);
+  }
+  .hover-lift:hover {
+    box-shadow: var(--shadow-lift);
+  }
+
+  .warm-glow {
+    background-image: var(--gradient-warm);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
