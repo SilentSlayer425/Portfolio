@@ -17,7 +17,7 @@ export function Skills() {
       </div>
 
       <div className="mt-16 relative">
-        <div className="flex animate-marquee whitespace-nowrap will-change-transform backface-hidden">
+        <div className="flex animate-marquee whitespace-nowrap will-change-transform backface-visibility-hidden">
           {doubled.map((b, i) => (
             <span
               key={i}
