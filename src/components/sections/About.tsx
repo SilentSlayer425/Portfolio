@@ -13,7 +13,11 @@ export function About() {
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border bg-secondary">
             <div className="absolute inset-0 warm-glow opacity-60" />
             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-              Portrait placeholder
+              <img
+                src="/images/Protrait.jpg"
+                alt="Portrait of me"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </div>
         </SectionReveal>
