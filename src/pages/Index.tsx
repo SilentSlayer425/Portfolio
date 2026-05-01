@@ -7,7 +7,7 @@ const Index = () => {
     <>
       <Hero />
       <About />
-      <NextPageNudge to="/journey" hint="Next" label="The Journey →" />
+      <NextPageNudge to="/journey" hint="Next" label="The Journey" />
     </>
   );
 };

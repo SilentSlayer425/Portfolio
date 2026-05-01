@@ -6,7 +6,7 @@ const Journey = () => (
   <>
     <Skills />
     <Experience />
-    <NextPageNudge to="/work" hint="Next" label="Selected Work →" />
+    <NextPageNudge to="/work" hint="Next" label="Selected Work" />
   </>
 );
 

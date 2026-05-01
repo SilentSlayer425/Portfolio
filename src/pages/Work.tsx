@@ -4,7 +4,7 @@ import { NextPageNudge } from "@/components/NextPageNudge";
 const Work = () => (
   <>
     <FeaturedWork />
-    <NextPageNudge to="/connect" hint="Next" label="Let's Connect →" />
+    <NextPageNudge to="/connect" hint="Next" label="Let's Connect" />
   </>
 );
 
