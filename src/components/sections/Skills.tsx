@@ -1,9 +1,32 @@
+import { useEffect, useState } from "react";
 import { skills } from "@/content/portfolio";
 import { SectionReveal } from "../SectionReveal";
+
+const BASE_WIDTH = 1080;
+const BASE_DURATION = 40; // seconds at 1080px
+
+function useMarqueeDuration() {
+  const [duration, setDuration] = useState(() =>
+    typeof window !== "undefined"
+      ? (window.innerWidth / BASE_WIDTH) * BASE_DURATION
+      : BASE_DURATION
+  );
+
+  useEffect(() => {
+    const update = () =>
+      setDuration((window.innerWidth / BASE_WIDTH) * BASE_DURATION);
+    window.addEventListener("resize", update);
+    update();
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return duration;
+}
 
 export function Skills() {
   const allBadges = Object.values(skills).flat();
   const doubled = [...allBadges, ...allBadges];
+  const marqueeDuration = useMarqueeDuration();
 
   return (
     <section className="relative py-24 md:py-36 overflow-hidden">
@@ -17,7 +40,10 @@ export function Skills() {
       </div>
 
       <div className="mt-16 relative">
-        <div className="flex animate-marquee whitespace-nowrap will-change-transform backface-visibility-hidden">
+        <div
+          className="flex animate-marquee whitespace-nowrap will-change-transform backface-visibility-hidden"
+          style={{ animationDuration: `${marqueeDuration}s` }}
+        >
           {doubled.map((b, i) => (
             <span
               key={i}
