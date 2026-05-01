@@ -21,11 +21,11 @@ export function Hero() {
       {/* Floating warm blob */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -left-32 h-[60vh] w-[60vh] rounded-full warm-glow blur-3xl animate-blob"
+        className="pointer-events-none absolute -top-32 -left-32 h-[60vh] w-[60vh] rounded-full warm-glow blur-3xl animate-blob will-change-transform backface-visibility-hidden"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -right-32 h-[55vh] w-[55vh] rounded-full warm-glow blur-3xl animate-blob"
+        className="pointer-events-none absolute -bottom-40 -right-32 h-[55vh] w-[55vh] rounded-full warm-glow blur-3xl animate-blob will-change-transform backface-visibility-hidden"
         style={{ animationDelay: "-7s" }}
       />
 
