@@ -50,7 +50,7 @@ export const projects = [
     live: "https://outfitcanvas.com",
     repo: "https://github.com/SilentSlayer425/outfit-canvas",
     label: "01",
-    iamge: "/projects/OutfitCanvasIcon.png",
+    image: "/projects/OutfitCanvasIcon.png",
   },
   {
     title: "Palladium",
