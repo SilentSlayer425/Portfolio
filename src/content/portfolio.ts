@@ -20,7 +20,7 @@ export const skills = {
   Languages: ["TypeScript", "Python", "SQL", "Java", "C", "HTML/CSS", "JavaScript", "Bash", "C++",],
   Frameworks: ["React", "Next.js", "Node.js", "Flask", "Tailwind"],
   Tools: ["Git", "Docker", "PuTTY", "AWS", "Figma", "Vite", "Gen AI APIs",],
-  Infrasturcture: ["Linux", "Bash",],
+  Infrasturcture: ["Linux","Azure"],
   ML: ["Local LLMS", "Prompt Engineering", "Integrating AI models into Apps", "Automation of AI-driven workflows"]
 };
 
