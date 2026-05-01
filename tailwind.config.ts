@@ -60,7 +60,7 @@ export default {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
         "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
         "fade-in": { "0%": { opacity: "0", transform: "translateY(12px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
-        "marquee": { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
+        "marquee": { "0%": { transform: "translate3d(0,0,0)" }, "100%": { transform: "translate3d(-50%,0,0)" } },
         "blob": {
           "0%, 100%": { transform: "translate(0,0) scale(1)" },
           "33%": { transform: "translate(30px,-20px) scale(1.1)" },
