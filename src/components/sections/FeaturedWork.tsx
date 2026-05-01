@@ -53,7 +53,11 @@ function ProjectScene({ project, index }: { project: typeof projects[number]; in
               {project.label}
             </div>
             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-              {project.title} — image placeholder
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
