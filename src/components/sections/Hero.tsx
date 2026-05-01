@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const letters = profile.name.split("");
+  const words = profile.name.split(" ");
   const [roleIdx, setRoleIdx] = useState(0);
 
   useEffect(() => {
@@ -34,19 +34,36 @@ export function Hero() {
           Portfolio · est. {new Date().getFullYear()}
         </p>
 
-        <h1 className="font-display text-[clamp(3rem,11vw,11rem)] leading-[0.95] font-medium text-balance">
-          {letters.map((ch, i) => (
-            <motion.span
-              key={i}
-              initial={reduce ? { opacity: 0 } : { y: "110%", opacity: 0 }}
-              animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-block"
-              style={{ whiteSpace: ch === " " ? "pre" : "normal" }}
-            >
-              {ch}
-            </motion.span>
-          ))}
+        <h1 className="font-display text-[clamp(3rem,11vw,11rem)] leading-[0.95] font-medium">
+          {words.map((word, wi) => {
+            const charOffset = words.slice(0, wi).reduce((acc, w) => acc + w.length + 1, 0);
+            return (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {word.split("").map((ch, ci) => (
+                  <motion.span
+                    key={ci}
+                    initial={reduce ? { opacity: 0 } : { y: "110%", opacity: 0 }}
+                    animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: (charOffset + ci) * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                    className="inline-block"
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
+                {wi < words.length - 1 && (
+                  <motion.span
+                    initial={reduce ? { opacity: 0 } : { y: "110%", opacity: 0 }}
+                    animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: (charOffset + word.length) * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                    className="inline-block"
+                    style={{ whiteSpace: "pre" }}
+                  >
+                    {" "}
+                  </motion.span>
+                )}
+              </span>
+            );
+          })}
         </h1>
 
         <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8 max-w-5xl">
