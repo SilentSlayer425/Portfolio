@@ -1,40 +1,16 @@
-import { useEffect, useState } from "react";
 import { skills } from "@/content/portfolio";
 import { SectionReveal } from "../SectionReveal";
 
 const BASE_WIDTH = 1080;
 const BASE_DURATION = 40; // seconds at 1080px
 
-function useMarqueeDuration() {
-  const [duration, setDuration] = useState(() =>
-    typeof window !== "undefined"
-      ? (window.innerWidth / BASE_WIDTH) * BASE_DURATION
-      : BASE_DURATION
-  );
-
-  useEffect(() => {
-    let rafId: ReturnType<typeof setTimeout>;
-    const update = () => {
-      clearTimeout(rafId);
-      rafId = setTimeout(
-        () => setDuration((window.innerWidth / BASE_WIDTH) * BASE_DURATION),
-        150
-      );
-    };
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("resize", update);
-      clearTimeout(rafId);
-    };
-  }, []);
-
-  return duration;
-}
-
 export function Skills() {
   const allBadges = Object.values(skills).flat();
   const doubled = [...allBadges, ...allBadges];
-  const marqueeDuration = useMarqueeDuration();
+  const marqueeDuration =
+    typeof window !== "undefined"
+      ? Math.min((window.innerWidth / BASE_WIDTH) * BASE_DURATION, BASE_DURATION)
+      : BASE_DURATION;
 
   return (
     <section className="relative py-24 md:py-36 overflow-hidden">
